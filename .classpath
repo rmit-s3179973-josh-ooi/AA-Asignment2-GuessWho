@@ -6,7 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="javaSrc"/>
-	<classpathentry kind="lib" path="__MACOSX/javaSrc/._jopt-simple-5.0.2.jar"/>
 	<classpathentry kind="lib" path="/Users/josh/Documents/Work/Repository/GuessWho/javaSrc/jopt-simple-5.0.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.HashMap;
 
 /**
  * Random guessing player.
@@ -10,6 +11,8 @@ import java.io.*;
 public class RandomGuessPlayer implements Player
 {
 
+	Person person;
+	HashMap<String,Person> persons;
     /**
      * Loads the game configuration from gameFilename, and also store the chosen
      * person.
@@ -24,7 +27,8 @@ public class RandomGuessPlayer implements Player
     public RandomGuessPlayer(String gameFilename, String chosenName)
         throws IOException
     {
-
+    	persons = FileLoader.getPersons(gameFilename);
+    	person = persons.get(chosenName);
     } // end of RandomGuessPlayer()
 
 
@@ -36,8 +40,12 @@ public class RandomGuessPlayer implements Player
 
 
     public boolean answer(Guess currGuess) {
+    	if(currGuess.getType() == Guess.GuessType.Person && person.getName().equals(currGuess.getValue()))
+			return true;
+		
+		if(person.getAttributeValue(currGuess.getAttribute()).equals(currGuess.getValue()) )
+			return true;
 
-        // placeholder, replace
         return false;
     } // end of answer()
 
@@ -45,7 +53,7 @@ public class RandomGuessPlayer implements Player
 	public boolean receiveAnswer(Guess currGuess, boolean answer) {
 
         // placeholder, replace
-        return true;
+        return false;
     } // end of receiveAnswer()
 
 } // end of class RandomGuessPlayer
